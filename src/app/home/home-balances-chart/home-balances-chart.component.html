@@ -5,26 +5,27 @@
         Top balances
       </mat-card-title>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content *ngIf="users && users.length">
       <div class="row">
-        <div class="col-8">
+        <div class="col-7">
           <ngx-charts-line-chart
             [view]="view"
-            [scheme]="colorScheme"
             [legend]="legend"
-            [showXAxisLabel]="showXAxisLabel"
-            [showYAxisLabel]="showYAxisLabel"
-            [xAxis]="xAxis"
-            [yAxis]="yAxis"
-            [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel"
-            [timeline]="timeline"
+            [yAxis]="true"
+            [xAxis]="true"
+            [autoScale]="true"
+            [animations]="animations"
+            [results]="chartData"
+            [scheme]="colorScheme"
           >
           </ngx-charts-line-chart>
         </div>
-        <div class="col-4">
+        <div class="col-5">
           <h3>Options</h3>
           <mat-checkbox [(ngModel)]="onlyActive">Only active?</mat-checkbox>
+          <mat-list role="list" *ngIf="chartData.series && chartData.series.length">
+            <mat-list-item role="listitem" *ngFor="let user of chartData.series">{{ user.name }}</mat-list-item>
+          </mat-list>
         </div>
       </div>
     </mat-card-content>

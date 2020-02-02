@@ -3,6 +3,8 @@ import { finalize } from 'rxjs/operators';
 
 import { QuoteService } from './quote.service';
 import { UserService } from '@app/home/user.service';
+import { Observable } from 'rxjs';
+import { User } from '@app/types';
 
 @Component({
   selector: 'app-home',
@@ -10,15 +12,13 @@ import { UserService } from '@app/home/user.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  quote: string | undefined;
-  isLoading = false;
+  public isLoading = false;
+  public users$: Observable<User[]>;
 
   constructor(private readonly userService: UserService) {}
 
   ngOnInit() {
     this.isLoading = true;
-    this.userService.getUsers().subscribe(res => {
-      console.log(res);
-    });
+    this.users$ = this.userService.getUsers();
   }
 }

@@ -11,7 +11,7 @@ import { HomeComponent } from './home.component';
 import { UserService } from '@app/home/user.service';
 import { HomeBalancesChartComponent } from './home-balances-chart/home-balances-chart.component';
 import { HomeGenderChartComponent } from './home-gender-chart/home-gender-chart.component';
-import { LineChartModule } from '@swimlane/ngx-charts';
+import { LineChartModule, PieChartModule } from '@swimlane/ngx-charts';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -24,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     HomeRoutingModule,
     LineChartModule,
-    FormsModule
+    FormsModule,
+    PieChartModule
   ],
   providers: [UserService],
   declarations: [HomeComponent, HomeBalancesChartComponent, HomeGenderChartComponent]
