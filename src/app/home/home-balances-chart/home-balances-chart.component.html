@@ -1,0 +1,32 @@
+<div class="widget-b">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Top balances
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-8">
+          <ngx-charts-line-chart
+            [view]="view"
+            [scheme]="colorScheme"
+            [legend]="legend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxis]="xAxis"
+            [yAxis]="yAxis"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [timeline]="timeline"
+          >
+          </ngx-charts-line-chart>
+        </div>
+        <div class="col-4">
+          <h3>Options</h3>
+          <mat-checkbox [(ngModel)]="onlyActive">Only active?</mat-checkbox>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
