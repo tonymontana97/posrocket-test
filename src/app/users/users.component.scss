@@ -1,0 +1,43 @@
+.user-table {
+  .mat-row {
+    .mat-cell {
+      padding: 7px 0;
+    }
+    .mat-column-tags {
+      width: 33%;
+    }
+    .mat-column-friends {
+      width: 33%;
+    }
+
+    .mat-column-picture {
+      width: 7%;
+    }
+
+    .mat-column-index {
+      width: 2%;
+    }
+
+    .mat-column-name {
+      width: 17%;
+    }
+
+    .mat-column-age {
+      width: 10%;
+    }
+
+    .mat-column-isActive {
+      width: 3%;
+    }
+
+    .mat-column-registered {
+      width: 17%;
+    }
+  }
+}
+
+.filter-form {
+  .mat-form-field {
+    display: block;
+  }
+}

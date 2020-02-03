@@ -20,7 +20,7 @@ export class User implements IUser {
   public longitude: number;
   public phone: string;
   public picture: string;
-  public readonly registered: Date;
+  public readonly registered: string;
   public tags: string[];
 
   constructor(user: any) {
@@ -30,5 +30,9 @@ export class User implements IUser {
   public get balanceNumber(): number {
     const balanceNoSymbol: string = this.balance.substring(1, this.balance.length).replace(',', '');
     return Number.parseFloat(balanceNoSymbol);
+  }
+
+  public get registeredDate(): Date {
+    return new Date(this.registered);
   }
 }

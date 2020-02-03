@@ -13,12 +13,9 @@ export class HomeGenderChartComponent {
 
   view: any[] = [700, 400];
   gadient = true;
-  showLegend = true;
-  showLabels = true;
-  isDoughnut = false;
 
   colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    domain: ['#5AA454', '#0042a1', '#C7B42C', '#AAAAAA']
   };
 
   constructor() {}

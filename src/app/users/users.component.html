@@ -1,0 +1,119 @@
+<div class="container">
+  <div class="widget-b">
+    <mat-card>
+      <mat-card-content>
+        <h2>Filter by</h2>
+        <div class="row filter-form align-items-center">
+          <div class="col-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput (keyup)="filter($event.target['value'], 'name')" />
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Phone</mat-label>
+              <input matInput (keyup)="filter($event.target['value'], 'phone')" />
+            </mat-form-field>
+          </div>
+          <div class="col-2">
+            <mat-form-field appearance="outline">
+              <mat-label>Friend</mat-label>
+              <input matInput (keyup)="filter($event.target['value'], 'friends')" />
+            </mat-form-field>
+          </div>
+          <div class="col-2">
+            <mat-form-field appearance="outline">
+              <mat-label>Tag</mat-label>
+              <input matInput (keyup)="filter($event.target['value'], 'tags')" />
+            </mat-form-field>
+          </div>
+          <div class="col-2">
+            <mat-checkbox (change)="filter($event.checked.toString(), 'isActive')">Only Active</mat-checkbox>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <table mat-table [dataSource]="dataSource" matSort class="w-100 user-table">
+          <!-- Position Column -->
+          <ng-container matColumnDef="index">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
+            <td mat-cell *matCellDef="let element">{{ element.index }}</td>
+          </ng-container>
+
+          <!-- Thumbnail Column -->
+          <ng-container matColumnDef="picture">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Image</th>
+            <td mat-cell *matCellDef="let element">
+              <div class="avatar" [ngStyle]="{ 'border-color': element.eyeColor }">
+                <img [src]="element.picture" alt="" />
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="registered">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Registered</th>
+            <td mat-cell *matCellDef="let element">{{ formatDate(element.registered) }}</td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="age">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Year of Birth</th>
+            <td mat-cell *matCellDef="let element">{{ getYearByAge(element.age) }}</td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="isActive">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Active</th>
+            <td mat-cell *matCellDef="let element">{{ element.isActive ? 'Yes' : 'No' }}</td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>E-mail</th>
+            <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
+            <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="tags">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Tags</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-chip-list *ngIf="element.tags && element.tags.length">
+                <mat-chip *ngFor="let tag of element.tags" color="accent">{{ tag }}</mat-chip>
+              </mat-chip-list>
+            </td></ng-container
+          >
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="friends">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Friends</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-chip-list *ngIf="element.friends && element.friends.length">
+                <mat-chip *ngFor="let friend of getFiriendsString(element.friends)" color="accent">{{
+                  friend
+                }}</mat-chip>
+              </mat-chip-list>
+            </td></ng-container
+          >
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons> </mat-paginator>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

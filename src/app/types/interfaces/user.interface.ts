@@ -15,7 +15,7 @@ export interface IUser {
   phone: string;
   address: string;
   about: string;
-  registered: Date;
+  registered: string;
   latitude: number;
   longitude: number;
   tags: string[];

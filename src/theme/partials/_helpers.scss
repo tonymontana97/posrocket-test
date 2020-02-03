@@ -1,3 +1,30 @@
 .widget-b {
   padding: 25px;
 }
+.w-100 {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border-width: 3px;
+  border-style: solid;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}
