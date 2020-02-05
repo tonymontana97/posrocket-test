@@ -32,7 +32,7 @@
     "@angular/platform-browser-dynamic": "^8.1.0",
     "@angular/router": "^8.1.0",
     "@ngx-translate/core": "^11.0.1",
-    "@swimlane/ngx-charts": "^13.0.2",
+    "@swimlane/ngx-charts": "^12.0.1",
     "@swimlane/ngx-graph": "^6.2.0",
     "bootstrap": "^4.4.1",
     "date-fns": "^1.30.1",
