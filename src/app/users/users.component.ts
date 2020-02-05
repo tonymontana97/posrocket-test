@@ -5,6 +5,8 @@ import { UserService } from '@app/home/user.service';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { format } from 'date-fns';
+import { MatDialog } from '@angular/material/dialog';
+import { UsersSingleComponent } from '@app/users/users-single/users-single.component';
 class Users {}
 
 @Component({
@@ -18,11 +20,11 @@ export class UsersComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true })
   public paginator: MatPaginator;
 
-  public displayedColumns: string[] = ['index', 'picture', 'name', 'phone', 'registered', 'age', 'isActive'];
+  public displayedColumns: string[] = ['index', 'picture', 'name', 'phone', 'registered', 'age', 'isActive', 'buttons'];
   public dataSource: MatTableDataSource<User> = null;
   public users: User[] = [];
 
-  constructor(private readonly userService: UserService) {}
+  constructor(private readonly userService: UserService, public readonly dialog: MatDialog) {}
 
   ngOnInit() {
     this.userService.getUsers().subscribe(users => {
@@ -92,5 +94,13 @@ export class UsersComponent implements OnInit {
   public filter(value: string, name: string): void {
     console.log(value);
     this.dataSource.filter = `${name}|${value}`;
+  }
+
+  openSingleUserForm(_id: string): void {
+    console.log(_id);
+    this.dialog.open(UsersSingleComponent, {
+      width: '1000px',
+      data: { id: _id }
+    });
   }
 }

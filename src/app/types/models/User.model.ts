@@ -6,6 +6,7 @@ export class User implements IUser {
   public readonly index: number;
   public readonly isActive: boolean;
   public about: string;
+  public name: string;
   public balance: string;
   public address: string;
   public age: number;

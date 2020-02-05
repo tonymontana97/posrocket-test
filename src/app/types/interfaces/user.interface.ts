@@ -3,6 +3,7 @@ import { EGender, IFriend } from '@app/types';
 export interface IUser {
   _id: string;
   index: number;
+  name: string;
   guid: string;
   balance: string;
   isActive: boolean;
